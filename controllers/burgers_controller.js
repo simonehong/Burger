@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.post('/burgers', function(req, res) {
+/*router.post('/burgers', function(req, res) {
   burger.insertOne([
     'burger_name'
   ], [
@@ -24,6 +24,12 @@ router.post('/burgers', function(req, res) {
   ], function(data) {
     res.redirect('/');
   });
+});*/
+router.post("/burgers/create", function(req, res){
+  burger.insertOne(req.body.burger_name, function(result){
+    console.log(result)
+    res.redirect("/")
+  })
 });
 
 router.put('/burgers/:id', function(req, res) {
