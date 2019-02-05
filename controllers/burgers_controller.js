@@ -16,15 +16,6 @@ router.get('/', function(req, res) {
   });
 });
 
-/*router.post('/burgers', function(req, res) {
-  burger.insertOne([
-    'burger_name'
-  ], [
-    req.body.burger_name
-  ], function(data) {
-    res.redirect('/');
-  });
-});*/
 router.post("/burgers/create", function(req, res){
   burger.insertOne(req.body.burger_name, function(result){
     console.log(result)
@@ -32,13 +23,9 @@ router.post("/burgers/create", function(req, res){
   })
 });
 
-router.put('/burgers/:id', function(req, res) {
-  var condition = 'id = ' + req.params.id;
-
-  burger.updateOne({
-    devoured: true
-  }, condition, function(data) {
-    res.redirect('/');
+router.post('/burger/eat/:id', function (req, res) {
+  burger.updateOne(req.params.id, function() {
+    res.redirect("/");
   });
 });
 
