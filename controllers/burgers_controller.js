@@ -23,9 +23,13 @@ router.post("/burgers/create", function(req, res){
   })
 });
 
-router.post('/burger/eat/:id', function (req, res) {
-  burger.updateOne(req.params.id, function() {
-    res.redirect("/");
+router.delete("/burger/:id", function(req, res) {
+  burger.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbAuthor) {
+    res.jredirect("/");
   });
 });
 

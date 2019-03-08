@@ -5,7 +5,7 @@ $(".devour").on("submit", function(event) {
     .children(".burger_id")
     .val();
   console.log("this is the id", burger_id);
-  $.ajax("/burgers" + burger_id, {
+  $.ajax("/burgers/" + burger_id, {
     type: "DELETE"
   }).then(function() {
       console.log("deleted id" + burger_id);
